@@ -8,6 +8,7 @@
   transition: background-color 0.3s ease;
   background-color: #3e562099;
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   .header {
     &-lang {
       .dropdown-custom {
