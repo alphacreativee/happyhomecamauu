@@ -19,13 +19,13 @@ function heroAnimation() {
   const splitTitle = SplitText.create(".hero-content h2", {
     type: "lines",
     mask: "lines",
-    linesClass: "line",
+    linesClass: "line"
   });
 
   tl.to(".hero-image img", {
     scale: 1,
     duration: 2,
-    ease: "power3.inOut",
+    ease: "power3.inOut"
   });
 
   tl.fromTo(
@@ -35,11 +35,75 @@ function heroAnimation() {
       y: "0%",
       duration: 0.8,
       ease: "power3.inOut",
-      stagger: 0.05,
+      stagger: 0.05
     },
-    "-=0.8",
+    "-=0.8"
   );
 }
+
+function revealClipImage() {
+  document.querySelectorAll(".reveal-animation").forEach((section) => {
+    const imageItems = Array.from(
+      section.querySelectorAll(".reveal-image-item")
+    );
+
+    const bgItems = Array.from(section.querySelectorAll(".reveal-bg-item"));
+    console.log(bgItems);
+
+    // stack image
+    imageItems.forEach((item, i) => {
+      item.style.zIndex = imageItems.length - i;
+    });
+
+    // stack bg
+    bgItems.forEach((item, i) => {
+      item.style.zIndex = bgItems.length - i;
+    });
+
+    gsap.set([...imageItems.slice(1), ...bgItems.slice(1)], {
+      clipPath: "inset(0 0 0 0)"
+    });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top top",
+        end: `+=${window.innerHeight * (imageItems.length - 1)}`,
+        pin: true,
+        scrub: true
+      }
+    });
+
+    imageItems.forEach((item, i) => {
+      if (i === 0) return;
+
+      tl.to(
+        imageItems[i - 1],
+        {
+          clipPath: "inset(0 0 100% 0)",
+          duration: 1,
+          ease: "none"
+        },
+        i
+      ); // 👈 KEY
+    });
+
+    bgItems.forEach((item, i) => {
+      if (i === 0) return;
+
+      tl.to(
+        bgItems[i - 1],
+        {
+          clipPath: "inset(0  0 100% 0)",
+          duration: 1,
+          ease: "none"
+        },
+        i
+      ); // 👈 KEY sync
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   heroAnimation();
 });
@@ -47,6 +111,7 @@ const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
   createFilterTab();
+  revealClipImage();
 };
 preloadImages("img").then(() => {
   init();
