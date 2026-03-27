@@ -12,7 +12,6 @@ gsap.ticker.add((time) => {
 });
 gsap.ticker.lagSmoothing(0);
 
-ScrollTrigger.normalizeScroll(true);
 function heroAnimation() {
   gsap.registerPlugin(SplitText);
   gsap.set(".hero-content h2", { visibility: "visible" });
@@ -73,7 +72,9 @@ function revealClipImage() {
         start: "top top",
         end: `+=${window.innerHeight * (imageItems.length - 1)}`,
         pin: true,
-        scrub: true,
+        scrub: 1,
+        anticipatePin: 1,
+        refreshPriority: 1,
       },
     });
 
@@ -169,7 +170,7 @@ function scaleSectionAndCity() {
     scrollTrigger: {
       trigger: ".scale",
       start: "top top",
-      end: "+=100%",
+      end: "+=150%",
       pin: true,
       pinSpacing: false,
       // markers: true,
@@ -204,7 +205,7 @@ function scaleSectionAndCity() {
     { y: "100%" },
     {
       y: "0%",
-      duration: 0.6,
+      duration: 1,
       ease: "power3.inOut",
       stagger: 0.05,
     },
@@ -245,6 +246,7 @@ function scaleSectionAndCity() {
 document.addEventListener("DOMContentLoaded", () => {
   heroAnimation();
 });
+
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
@@ -253,6 +255,7 @@ const init = () => {
   animationTextHeading();
   bgImageParallax();
   scaleSectionAndCity();
+  ScrollTrigger.refresh();
 };
 preloadImages("img").then(() => {
   init();

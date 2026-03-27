@@ -4,6 +4,8 @@
   height: 100svh;
   overflow: hidden;
   z-index: 2;
+  // add thêm spacing
+  margin-bottom: 50vh;
   &::before {
     content: "";
     position: absolute;
