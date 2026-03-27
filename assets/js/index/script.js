@@ -95,6 +95,65 @@ function bgImageParallax() {
     );
   });
 }
+function scaleSectionAndCity() {
+  gsap.registerPlugin(SplitText);
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".scale",
+      start: "top top",
+      end: "+=100%",
+      pin: true,
+      pinSpacing: false,
+      // markers: true,
+    },
+  });
+  const tl1 = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".scale",
+      start: "top 30%",
+      end: "bottom top",
+    },
+  });
+  tl1.to(".scale-image img", {
+    scale: 1,
+    duration: 2,
+    ease: "power3.inOut",
+  });
+  const splitContent = SplitText.create(".scale-content ul li p", {
+    type: "lines",
+    mask: "lines",
+    linesClass: "line",
+  });
+  const tl2 = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".scale-content",
+      start: "top 75%",
+      end: "bottom 75%",
+    },
+  });
+  tl2.fromTo(
+    splitContent.lines,
+    { y: "100%" },
+    {
+      y: "0%",
+      duration: 0.6,
+      ease: "power3.inOut",
+      stagger: 0.05,
+    },
+  );
+  gsap.from(".city", {
+    scrollTrigger: {
+      trigger: ".city",
+      start: "top bottom",
+      end: "top top",
+      scrub: 1,
+      // markers: true,
+    },
+    // y: "30%",
+    // ease: "none",
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   heroAnimation();
 });
@@ -104,6 +163,7 @@ const init = () => {
   createFilterTab();
   animationTextHeading();
   bgImageParallax();
+  scaleSectionAndCity();
 };
 preloadImages("img").then(() => {
   init();

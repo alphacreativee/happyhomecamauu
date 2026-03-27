@@ -1,0 +1,31 @@
+.city {
+  position: relative;
+  z-index: 3;
+  background-color: var(--color-third);
+  height: 100svh;
+  background-color: #000;
+  overflow: hidden;
+  &-image {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("../../images/icons/mask.svg");
+      background-size: cover;
+      background-position: center center;
+      pointer-events: none;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

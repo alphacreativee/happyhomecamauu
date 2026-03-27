@@ -566,6 +566,7 @@ body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 2;
+  pointer-events: none;
 }
 .hero-wrapper {
   width: 100%;
@@ -589,6 +590,7 @@ body {
   transform: translate(-50%, -50%);
   z-index: 4;
   max-width: 550px;
+  padding-top: 80px;
 }
 .hero-content h2 {
   font-family: var(--font-heading);
@@ -620,6 +622,7 @@ body {
   height: 100%;
   background: linear-gradient(180deg, rgba(90, 69, 54, 0) -2.08%, #5a4536 91.51%);
   z-index: 2;
+  pointer-events: none;
 }
 .intro-content {
   position: absolute;
@@ -641,4 +644,101 @@ body {
   position: relative;
   will-change: transform;
   transform: translateY(100%);
+}
+
+.scale {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  z-index: 2;
+}
+.scale::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #5a4536 10.67%, rgba(90, 69, 54, 0) 31.19%);
+  z-index: 2;
+  pointer-events: none;
+}
+.scale::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 35%;
+  background: linear-gradient(180deg, rgba(90, 69, 54, 0) 0%, #5a4536 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+.scale-image {
+  width: 100%;
+  height: 100%;
+}
+.scale-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.1);
+  transform-origin: center;
+  object-position: top;
+}
+.scale-content {
+  position: absolute;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+.scale-content ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.scale-content ul li p {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  line-height: 1.4;
+  color: var(--color-fourth);
+  font-weight: 300;
+}
+.scale-content ul li p .line {
+  position: relative;
+  will-change: transform;
+  transform: translateY(100%);
+}
+
+.city {
+  position: relative;
+  z-index: 3;
+  background-color: var(--color-third);
+  height: 100svh;
+  background-color: #000;
+  overflow: hidden;
+}
+.city-image {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.city-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../images/icons/mask.svg");
+  background-size: cover;
+  background-position: center center;
+  pointer-events: none;
+}
+.city-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
