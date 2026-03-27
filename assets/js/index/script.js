@@ -4,12 +4,15 @@ import { customDropdown, createFilterTab } from "../../main/js/global.min.js";
 $ = jQuery;
 
 const lenis = new Lenis();
+
 lenis.on("scroll", ScrollTrigger.update);
+
 gsap.ticker.add((time) => {
   lenis.raf(time * 1000);
 });
-
 gsap.ticker.lagSmoothing(0);
+
+ScrollTrigger.normalizeScroll(true);
 function heroAnimation() {
   gsap.registerPlugin(SplitText);
   gsap.set(".hero-content h2", { visibility: "visible" });
