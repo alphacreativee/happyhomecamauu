@@ -294,7 +294,6 @@ body {
   color: var(--color-fourth);
   overflow: hidden;
   background-color: #4c392b;
-  margin-top: 30vh;
 }
 .footer-top {
   position: relative;
@@ -605,6 +604,107 @@ body {
   position: relative;
   will-change: transform;
   transform: translateY(100%);
+}
+
+.reveal-animation {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+}
+.reveal-animation .reveal-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.reveal-animation .reveal-image {
+  position: relative;
+  z-index: 2;
+}
+.reveal-animation .reveal-image-list {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+}
+.reveal-animation .reveal-image-list .reveal-image-item {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  transform: translateY(-50%);
+  width: 520px;
+  min-height: 560px;
+  height: 560px;
+  background-color: var(--bg-card);
+  color: var(--color-fourth);
+}
+.reveal-animation .reveal-image-list .reveal-image-item .image {
+  width: 100%;
+  aspect-ratio: 563/303;
+}
+.reveal-animation .reveal-image-list .reveal-image-item .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.reveal-animation .reveal-image-list .reveal-image-item .content {
+  padding: 90px 40px 72px;
+  font-size: 16px;
+  line-height: 130%;
+  font-weight: 500;
+  position: relative;
+}
+.reveal-animation .reveal-image-list .reveal-image-item .number {
+  font-size: 130px;
+  line-height: 1;
+  font-weight: 500;
+  font-family: var(--font-heading);
+  position: absolute;
+  top: 0;
+  left: 40px;
+  transform: translateY(-50%);
+}
+.reveal-animation .reveal-content {
+  display: flex;
+  align-items: start;
+  height: 100%;
+  padding-left: 45px;
+  padding-top: 120px;
+  position: relative;
+  z-index: 2;
+}
+.reveal-animation .reveal-content h2 {
+  font-size: 64px;
+  line-height: 74px;
+  font-weight: 300;
+  margin-bottom: 24px;
+  color: var(--color-fourth);
+  font-family: var(--font-heading);
+  max-width: 480px;
+}
+.reveal-animation .reveal-bg {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.reveal-animation .reveal-bg-item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+.reveal-animation .reveal-bg-item:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(60, 84, 32, 0.05);
+  backdrop-filter: blur(10px);
 }
 
 .intro {

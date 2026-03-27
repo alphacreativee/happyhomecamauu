@@ -40,6 +40,70 @@ function heroAnimation() {
     "-=0.8",
   );
 }
+
+function revealClipImage() {
+  document.querySelectorAll(".reveal-animation").forEach((section) => {
+    const imageItems = Array.from(
+      section.querySelectorAll(".reveal-image-item"),
+    );
+
+    const bgItems = Array.from(section.querySelectorAll(".reveal-bg-item"));
+    console.log(bgItems);
+
+    // stack image
+    imageItems.forEach((item, i) => {
+      item.style.zIndex = imageItems.length - i;
+    });
+
+    // stack bg
+    bgItems.forEach((item, i) => {
+      item.style.zIndex = bgItems.length - i;
+    });
+
+    gsap.set([...imageItems.slice(1), ...bgItems.slice(1)], {
+      clipPath: "inset(0 0 0 0)",
+    });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top top",
+        end: `+=${window.innerHeight * (imageItems.length - 1)}`,
+        pin: true,
+        scrub: true,
+      },
+    });
+
+    imageItems.forEach((item, i) => {
+      if (i === 0) return;
+
+      tl.to(
+        imageItems[i - 1],
+        {
+          clipPath: "inset(0 0 100% 0)",
+          duration: 1,
+          ease: "none",
+        },
+        i,
+      ); // 👈 KEY
+    });
+
+    bgItems.forEach((item, i) => {
+      if (i === 0) return;
+
+      tl.to(
+        bgItems[i - 1],
+        {
+          clipPath: "inset(0 0 100% 0)",
+          duration: 1,
+          ease: "none",
+        },
+        i,
+      ); // 👈 KEY sync
+    });
+  });
+}
+
 function animationTextHeading() {
   gsap.registerPlugin(SplitText, ScrollTrigger);
 
@@ -95,6 +159,7 @@ function bgImageParallax() {
     );
   });
 }
+
 function scaleSectionAndCity() {
   gsap.registerPlugin(SplitText);
   const tl = gsap.timeline({
@@ -181,6 +246,7 @@ const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
   createFilterTab();
+  revealClipImage();
   animationTextHeading();
   bgImageParallax();
   scaleSectionAndCity();
