@@ -151,6 +151,22 @@ body {
   background-color: var(--color-third);
 }
 
+.txt-gradient .line {
+  background: linear-gradient(270deg, #fdd0a4 0%, #b78053 26.44%, #fdd0a4 50.96%, #b78053 74.04%, #fdd0a4 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
 #header {
   position: fixed;
   top: 0;
@@ -323,6 +339,44 @@ body {
   visibility: hidden;
 }
 .hero-content h2 .line {
+  position: relative;
+  will-change: transform;
+  transform: translateY(100%);
+}
+
+.intro {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+}
+.intro::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(90, 69, 54, 0) -2.08%, #5a4536 91.51%);
+  z-index: 2;
+}
+.intro-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  max-width: 900px;
+  width: 100%;
+}
+.intro-content h2 {
+  font-size: 90px;
+  line-height: 120px;
+  font-family: var(--font-heading);
+  font-weight: 300;
+  text-align: center;
+}
+.intro-content h2 .line {
   position: relative;
   will-change: transform;
   transform: translateY(100%);

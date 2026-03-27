@@ -40,6 +40,61 @@ function heroAnimation() {
     "-=0.8",
   );
 }
+function animationTextHeading() {
+  gsap.registerPlugin(SplitText, ScrollTrigger);
+
+  document.querySelectorAll(".el-heading-line").forEach((el) => {
+    if (el.dataset.scriptInitialized) return;
+    el.dataset.scriptInitialized = "true";
+
+    const splitTitle = SplitText.create(el, {
+      type: "lines",
+      mask: "lines",
+      linesClass: "line",
+    });
+
+    gsap.fromTo(
+      splitTitle.lines,
+      { y: "100%" },
+      {
+        y: "0%",
+        duration: 0.8,
+        ease: "power3.inOut",
+        stagger: 0.05,
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%",
+          end: "bottom 85%",
+          toggleActions: "play none none none",
+        },
+      },
+    );
+  });
+}
+function bgImageParallax() {
+  document.querySelectorAll(".bg-parallax").forEach((el) => {
+    if (el.dataset.scriptInitialized) return;
+    el.dataset.scriptInitialized = "true";
+
+    const img = el.querySelector("img");
+    if (!img) return;
+    const percentParallax = 30;
+    gsap.fromTo(
+      img,
+      { yPercent: `-${percentParallax}` },
+      {
+        yPercent: percentParallax,
+        ease: "none",
+        scrollTrigger: {
+          trigger: el,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      },
+    );
+  });
+}
 document.addEventListener("DOMContentLoaded", () => {
   heroAnimation();
 });
@@ -47,6 +102,8 @@ const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
   createFilterTab();
+  animationTextHeading();
+  bgImageParallax();
 };
 preloadImages("img").then(() => {
   init();
