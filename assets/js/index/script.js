@@ -10,7 +10,39 @@ gsap.ticker.add((time) => {
 });
 
 gsap.ticker.lagSmoothing(0);
+function heroAnimation() {
+  gsap.registerPlugin(SplitText);
+  gsap.set(".hero-content h2", { visibility: "visible" });
 
+  const tl = gsap.timeline();
+
+  const splitTitle = SplitText.create(".hero-content h2", {
+    type: "lines",
+    mask: "lines",
+    linesClass: "line",
+  });
+
+  tl.to(".hero-image img", {
+    scale: 1,
+    duration: 2,
+    ease: "power3.inOut",
+  });
+
+  tl.fromTo(
+    splitTitle.lines,
+    { y: "100%" },
+    {
+      y: "0%",
+      duration: 0.8,
+      ease: "power3.inOut",
+      stagger: 0.05,
+    },
+    "-=0.8",
+  );
+}
+document.addEventListener("DOMContentLoaded", () => {
+  heroAnimation();
+});
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
