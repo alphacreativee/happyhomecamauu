@@ -1,0 +1,42 @@
+:root {
+  // font
+  --font-heading: "Platypi", sans-serif;
+  --font-body: "Manrope", sans-serif;
+  // color
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-primary: #4b1610;
+  --color-secondary: #344415;
+  --color-third: #5a4536;
+  --color-fourth: #e1cdad;
+  --color-fifth: #c07e4a;
+  //
+}
+// font variable
+// color variable
+.color-black {
+  color: var(--color-black);
+}
+.color-white {
+  color: var(--color-white);
+}
+.color-primary {
+  color: var(--color-primary);
+}
+.color-secondary {
+  color: var(--color-secondary);
+}
+.color-third {
+  color: var(--color-third);
+}
+.color-fourth {
+  color: var(--color-fourth);
+}
+.color-fifth {
+  color: var(--color-fifth);
+}
+.limit-width {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+}
