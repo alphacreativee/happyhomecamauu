@@ -94,13 +94,128 @@ function revealClipImage() {
       tl.to(
         bgItems[i - 1],
         {
-          clipPath: "inset(0  0 100% 0)",
+          clipPath: "inset(0 0 100% 0)",
           duration: 1,
           ease: "none"
         },
         i
       ); // 👈 KEY sync
     });
+  });
+}
+
+function animationTextHeading() {
+  gsap.registerPlugin(SplitText, ScrollTrigger);
+
+  document.querySelectorAll(".el-heading-line").forEach((el) => {
+    if (el.dataset.scriptInitialized) return;
+    el.dataset.scriptInitialized = "true";
+
+    const splitTitle = SplitText.create(el, {
+      type: "lines",
+      mask: "lines",
+      linesClass: "line"
+    });
+
+    gsap.fromTo(
+      splitTitle.lines,
+      { y: "100%" },
+      {
+        y: "0%",
+        duration: 0.8,
+        ease: "power3.inOut",
+        stagger: 0.05,
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%",
+          end: "bottom 85%",
+          toggleActions: "play none none none"
+        }
+      }
+    );
+  });
+}
+function bgImageParallax() {
+  document.querySelectorAll(".bg-parallax").forEach((el) => {
+    if (el.dataset.scriptInitialized) return;
+    el.dataset.scriptInitialized = "true";
+
+    const img = el.querySelector("img");
+    if (!img) return;
+    const percentParallax = 30;
+    gsap.fromTo(
+      img,
+      { yPercent: `-${percentParallax}` },
+      {
+        yPercent: percentParallax,
+        ease: "none",
+        scrollTrigger: {
+          trigger: el,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true
+        }
+      }
+    );
+  });
+}
+
+function scaleSectionAndCity() {
+  gsap.registerPlugin(SplitText);
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".scale",
+      start: "top top",
+      end: "+=100%",
+      pin: true,
+      pinSpacing: false
+      // markers: true,
+    }
+  });
+  const tl1 = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".scale",
+      start: "top 30%",
+      end: "bottom top"
+    }
+  });
+  tl1.to(".scale-image img", {
+    scale: 1,
+    duration: 2,
+    ease: "power3.inOut"
+  });
+  const splitContent = SplitText.create(".scale-content ul li p", {
+    type: "lines",
+    mask: "lines",
+    linesClass: "line"
+  });
+  const tl2 = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".scale-content",
+      start: "top 75%",
+      end: "bottom 75%"
+    }
+  });
+  tl2.fromTo(
+    splitContent.lines,
+    { y: "100%" },
+    {
+      y: "0%",
+      duration: 0.6,
+      ease: "power3.inOut",
+      stagger: 0.05
+    }
+  );
+  gsap.from(".city", {
+    scrollTrigger: {
+      trigger: ".city",
+      start: "top bottom",
+      end: "top top",
+      scrub: 1
+      // markers: true,
+    }
+    // y: "30%",
+    // ease: "none",
   });
 }
 
@@ -112,6 +227,9 @@ const init = () => {
   customDropdown();
   createFilterTab();
   revealClipImage();
+  animationTextHeading();
+  bgImageParallax();
+  scaleSectionAndCity();
 };
 preloadImages("img").then(() => {
   init();

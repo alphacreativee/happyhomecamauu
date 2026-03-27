@@ -1,0 +1,25 @@
+.txt-gradient {
+  .line {
+    background: linear-gradient(
+      270deg,
+      #fdd0a4 0%,
+      #b78053 26.44%,
+      #fdd0a4 50.96%,
+      #b78053 74.04%,
+      #fdd0a4 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: shine 5s linear infinite;
+  }
+}
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
