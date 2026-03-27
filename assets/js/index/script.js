@@ -141,17 +141,37 @@ function scaleSectionAndCity() {
       stagger: 0.05,
     },
   );
-  gsap.from(".city", {
-    scrollTrigger: {
-      trigger: ".city",
-      start: "top bottom",
-      end: "top top",
-      scrub: 1,
-      // markers: true,
-    },
-    // y: "30%",
-    // ease: "none",
-  });
+  // gsap.from(".city", {
+  //   scrollTrigger: {
+  //     trigger: ".city",
+  //     start: "top bottom",
+  //     end: "top top",
+  //     scrub: 1,
+  //     markers: true,
+  //   },
+
+  //   // y: "30%",
+  //   // ease: "none",
+  // });
+  // const tlCity = gsap.timeline({
+  //   scrollTrigger: {
+  //     trigger: ".city",
+  //     start: "top 50%",
+  //     end: "top top",
+  //     markers: true,
+  //   },
+  // });
+  // tlCity.fromTo(
+  //   ".city-overlay",
+  //   {
+  //     clipPath: "inset(0 0 0 0)",
+  //   },
+  //   {
+  //     clipPath: "inset(0  0 100% 0)",
+  //     ease: "none",
+  //     duration: 1,
+  //   },
+  // );
 }
 
 document.addEventListener("DOMContentLoaded", () => {
