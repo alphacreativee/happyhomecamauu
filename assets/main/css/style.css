@@ -916,7 +916,6 @@ body {
   position: relative;
   height: 100%;
   perspective: 1200px;
-  perspective-origin: right center;
 }
 .map-img img {
   position: absolute;
@@ -974,6 +973,5 @@ body {
   z-index: 3;
   background-color: var(--color-third);
   height: 100svh;
-  background-color: #000;
   overflow: hidden;
 }
