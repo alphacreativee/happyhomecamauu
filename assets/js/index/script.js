@@ -73,8 +73,9 @@ function revealClipImage() {
         end: `+=${window.innerHeight * (imageItems.length - 1)}`,
         pin: true,
         scrub: 1,
-        anticipatePin: 1,
-        refreshPriority: 1
+        anticipatePin: 1
+        // refreshPriority: 1,
+        // markers: true
       }
     });
 
@@ -123,7 +124,7 @@ function partnerSection() {
   gsap.set(circle, { opacity: 0, scale: 0.6 });
   gsap.set(panel2, { opacity: 0, pointerEvents: "none" });
 
-  const extraScroll = window.innerHeight * 0.5; // 👈 thêm 50vh
+  const extraScroll = window.innerHeight * 0.5;
 
   const tl = gsap.timeline({
     scrollTrigger: {
@@ -132,7 +133,8 @@ function partnerSection() {
       end: () => "+=" + (window.innerHeight + extraScroll),
       pin: true,
       scrub: 1,
-      anticipatePin: 1
+      anticipatePin: 1,
+      pinSpacing: false
     }
   });
 
