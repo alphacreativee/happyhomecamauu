@@ -5,9 +5,17 @@
   height: 100svh;
   overflow: hidden;
 
+  .circle-gradient {
+    top: -50%;
+    position: fixed;
+    z-index: 1;
+    opacity: 0.9;
+  }
+
   .reveal-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    position: relative;
   }
 
   .reveal-image {

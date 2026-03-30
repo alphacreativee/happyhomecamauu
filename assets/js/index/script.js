@@ -50,7 +50,28 @@ function revealClipImage() {
     );
 
     const bgItems = Array.from(section.querySelectorAll(".reveal-bg-item"));
-    console.log(bgItems);
+    const circle = section.querySelector(".circle-gradient");
+
+    gsap.set(circle, {
+      position: "fixed",
+      top: "-50%",
+      left: "50%",
+      xPercent: -50,
+      yPercent: -50
+    });
+
+    gsap.to(circle, {
+      top: "25%",
+      left: "20%",
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
+        start: "top bottom",
+        end: "top top",
+        scrub: 1
+        // markers: true
+      }
+    });
 
     // stack image
     imageItems.forEach((item, i) => {
@@ -104,7 +125,7 @@ function revealClipImage() {
           ease: "none"
         },
         i
-      ); // 👈 KEY sync
+      );
     });
   });
 }
@@ -121,8 +142,30 @@ function partnerSection() {
   const circle = document.querySelector(".circle-gradient");
 
   gsap.set(desc, { opacity: 0 });
-  gsap.set(circle, { opacity: 0, scale: 0.6 });
   gsap.set(panel2, { opacity: 0, pointerEvents: "none" });
+
+  gsap.set(circle, {
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    xPercent: -50,
+    yPercent: -50,
+    opacity: 0,
+    scale: 0.6
+  });
+
+  gsap.to(circle, {
+    left: "20%",
+    yPercent: 50,
+    ease: "none",
+    scrollTrigger: {
+      trigger: section,
+      start: "top+=140% top",
+      endTrigger: ".reveal-animation",
+      end: "top+=100vh top",
+      scrub: 1
+    }
+  });
 
   const extraScroll = window.innerHeight * 0.5;
 
@@ -138,18 +181,38 @@ function partnerSection() {
     }
   });
 
-  // 🎬 1. Image fade
+  // 1. Image fade
   tl.to(
     bgImg,
     {
       opacity: 1,
       ease: "none",
-      duration: 1
+      duration: 0.4
     },
     0
   );
 
-  // 🎬 2. Desc + hide title + circle (80%)
+  tl.to(
+    title,
+    {
+      opacity: 0,
+      duration: 0.4
+    },
+    0
+  );
+
+  tl.to(
+    circle,
+    {
+      opacity: 0.9,
+      scale: 1,
+      duration: 0.5,
+      ease: "power2.out"
+    },
+    0.3
+  );
+
+  // 2. Desc + hide title + circle (80%)
   tl.to(
     desc,
     {
@@ -157,43 +220,23 @@ function partnerSection() {
       duration: 0.3,
       ease: "power1.out"
     },
-    0.8
-  );
-
-  tl.to(
-    title,
-    {
-      opacity: 0,
-      duration: 0.3
-    },
-    0.8
-  );
-
-  tl.to(
-    circle,
-    {
-      opacity: 0.6,
-      scale: 1,
-      duration: 0.5,
-      ease: "power2.out"
-    },
-    0.8
+    0.5
   );
 
   tl.to(
     panel1,
     {
       opacity: 0,
-      duration: 0.5,
+      duration: 0.3,
       ease: "power2.out"
     },
-    1.2
+    1
   )
 
     .to(panel2, {
       opacity: 1,
       pointerEvents: "auto",
-      duration: 0.5,
+      duration: 0.3,
       ease: "power2.out"
     });
 }
