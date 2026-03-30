@@ -192,6 +192,17 @@ function partnerSection() {
     0
   );
 
+  // 🎬 2. Desc + hide title + circle (80%)
+  tl.to(
+    desc,
+    {
+      opacity: 1,
+      duration: 0.3,
+      ease: "power1.out"
+    },
+    0.8
+  );
+
   tl.to(
     title,
     {
@@ -494,7 +505,7 @@ function mapAnimation() {
     { y: "100%" },
     {
       y: "0%",
-      duration: 2,
+      duration: 1,
       ease: "power3.inOut",
       stagger: 0.05
     },
@@ -515,6 +526,105 @@ function mapAnimation() {
     "-=0.6"
   );
 }
+function viewSection() {
+  if (!document.querySelector(".view")) return;
+  const tlView = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".view",
+      start: "top 50%",
+      end: "top top"
+      // markers: true,
+    }
+  });
+  tlView.to(".view-image img", {
+    scale: 1,
+    duration: 2,
+    ease: "power3.inOut"
+  });
+
+  const splitContentView = SplitText.create(".view-content h2", {
+    type: "lines",
+    mask: "lines",
+    linesClass: "line"
+  });
+  tlView.fromTo(
+    splitContentView.lines,
+    { y: "100%" },
+    {
+      y: "0%",
+      duration: 1,
+      ease: "power3.inOut",
+      stagger: 0.05
+    },
+    "-=1.6"
+  );
+  tlView.fromTo(
+    ".view-content p",
+    {
+      opacity: 0,
+      y: 60
+    },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.8
+    },
+    "-=1.0"
+  );
+}
+function ripplesView() {
+  if (!document.querySelector(".view")) return;
+  $(".view-image ").ripples({
+    resolution: 256,
+    perturbance: 0,
+    interactive: true,
+    dropRadius: 60,
+    crossOrigin: "",
+    strength0: 0.003
+  });
+  const $el = $(".view-image");
+
+  $el.on("mousemove", function (e) {
+    const rect = this.getBoundingClientRect();
+
+    const xPercent = (e.clientX - rect.left) / rect.width - 0.5;
+    const yPercent = (e.clientY - rect.top) / rect.height - 0.5;
+
+    const moveX = 50 + xPercent * 20;
+    const moveY = 50 + yPercent * 20;
+
+    gsap.to($el, {
+      backgroundPositionX: `${moveX}%`,
+      backgroundPositionY: `${moveY}%`,
+      duration: 1.2,
+      ease: "power2.out"
+    });
+  });
+
+  $el.on("mouseleave", function () {
+    gsap.to($el, {
+      backgroundPositionX: "50%",
+      backgroundPositionY: "50%",
+      duration: 1.5,
+      ease: "power2.out"
+    });
+  });
+}
+function directionCols() {
+  gsap.registerPlugin(SplitText);
+  if (!document.querySelector(".direction-cols")) return;
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".direction-cols",
+      start: "top top",
+      end: "+=150%",
+      pin: true,
+      pinSpacing: false,
+      markers: true
+    }
+  });
+}
+function overviewSection() {}
 document.addEventListener("DOMContentLoaded", () => {
   heroAnimation();
 });
@@ -531,6 +641,10 @@ const init = () => {
   mapAnimation();
   partnerSection();
   marquee();
+  viewSection();
+  ripplesView();
+  directionCols();
+  overviewSection();
   ScrollTrigger.refresh();
 };
 preloadImages("img").then(() => {
