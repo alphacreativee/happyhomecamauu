@@ -1009,7 +1009,7 @@ body {
   left: 0;
   padding-left: calc(8.3333333333% + 24px);
   top: 110px;
-  max-width: 550px;
+  max-width: 600px;
   width: 100%;
 }
 .city-heading h2 {
@@ -1037,4 +1037,88 @@ body {
   font-weight: 500;
   font-family: var(--font-body);
   color: var(--color-fourth);
+}
+.city-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-third);
+  z-index: 3;
+}
+
+.map {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  background-color: var(--color-secondary);
+  z-index: 2;
+  margin-bottom: 50vh;
+}
+.map-img {
+  position: relative;
+  height: 100%;
+  perspective: 1200px;
+  perspective-origin: right center;
+}
+.map-img img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: contain;
+  object-position: center right;
+  pointer-events: none;
+}
+.map-img img.map-river {
+  left: auto;
+  right: -8px;
+  transform-origin: center center;
+  opacity: 0;
+  transform: translateZ(400);
+}
+@media (min-width: 1536px) {
+  .map-img img.map-river {
+    right: -10px;
+  }
+}
+.map-content {
+  position: absolute;
+  z-index: 3;
+  bottom: 40px;
+  left: 24px;
+}
+.map-content h2 {
+  font-size: 64px;
+  line-height: 1.4;
+  font-family: var(--font-heading);
+  font-weight: 300;
+  text-align: left;
+  color: var(--color-fourth);
+  margin-bottom: 48px;
+}
+.map-content h2 .line {
+  position: relative;
+  will-change: transform;
+  transform: translateY(100%);
+}
+.map-content p {
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 500;
+  font-family: var(--font-body);
+  color: var(--color-fourth);
+  max-width: 500px;
+}
+
+.view {
+  position: relative;
+  z-index: 3;
+  background-color: var(--color-third);
+  height: 100svh;
+  background-color: #000;
+  overflow: hidden;
 }
