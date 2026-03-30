@@ -164,8 +164,9 @@ function bgImageParallax() {
   });
 }
 
-function scaleSectionAndCity() {
+function scaleSection() {
   gsap.registerPlugin(SplitText);
+  if (!document.querySelector(".scale")) return;
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".scale",
@@ -222,6 +223,9 @@ function scaleSectionAndCity() {
   //   // y: "30%",
   //   // ease: "none",
   // });
+}
+function citySection() {
+  if (!document.querySelector(".city")) return;
   const tlCity = gsap.timeline({
     scrollTrigger: {
       trigger: ".city",
@@ -269,7 +273,7 @@ function scaleSectionAndCity() {
     },
   );
 }
-
+function mapAnimation() {}
 document.addEventListener("DOMContentLoaded", () => {
   heroAnimation();
 });
@@ -281,7 +285,9 @@ const init = () => {
   revealClipImage();
   animationTextHeading();
   bgImageParallax();
-  scaleSectionAndCity();
+  scaleSection();
+  citySection();
+  mapAnimation();
   ScrollTrigger.refresh();
 };
 preloadImages("img").then(() => {

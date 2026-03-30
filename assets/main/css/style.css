@@ -902,3 +902,36 @@ body {
   background-color: var(--color-third);
   z-index: 3;
 }
+
+.map {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  background-color: var(--color-secondary);
+}
+.map-img {
+  position: relative;
+  height: 100%;
+}
+.map-img img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: contain;
+  object-position: center right;
+  pointer-events: none;
+}
+.map-img img.map-river {
+  left: unset;
+  right: -8px;
+  opacity: 0;
+  transform-origin: center center;
+}
+@media (min-width: 1536px) {
+  .map-img img.map-river {
+    right: -10px;
+  }
+}
