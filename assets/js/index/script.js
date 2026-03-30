@@ -259,6 +259,7 @@ function citySection() {
       ease: "power3.inOut",
       stagger: 0.05,
     },
+    "-=0.6",
   );
   tlCity.fromTo(
     ".city-description p",
@@ -271,9 +272,64 @@ function citySection() {
       y: 0,
       duration: 0.8,
     },
+    "-=0.6",
   );
 }
-function mapAnimation() {}
+function mapAnimation() {
+  const tlMap = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".map",
+      start: "top top",
+      end: "+=150%",
+      pin: true,
+      pinSpacing: false,
+      // markers: true,
+    },
+  });
+  const splitContentCitySection = SplitText.create(".map-content h2", {
+    type: "lines",
+    mask: "lines",
+    linesClass: "line",
+  });
+  tlMap.fromTo(
+    ".map-img .map-river",
+    {
+      opacity: 0,
+      z: 400,
+    },
+    {
+      opacity: 1,
+      z: 0,
+      duration: 1,
+      ease: "power3.inOut",
+    },
+  );
+  tlMap.fromTo(
+    splitContentCitySection.lines,
+    { y: "100%" },
+    {
+      y: "0%",
+      duration: 2,
+      ease: "power3.inOut",
+      stagger: 0.05,
+    },
+    "-=0.6",
+  );
+
+  tlMap.fromTo(
+    ".map-content p",
+    {
+      opacity: 0,
+      y: 60,
+    },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+    },
+    "-=0.6",
+  );
+}
 document.addEventListener("DOMContentLoaded", () => {
   heroAnimation();
 });

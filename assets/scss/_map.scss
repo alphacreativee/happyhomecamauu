@@ -4,9 +4,15 @@
   height: 100svh;
   overflow: hidden;
   background-color: var(--color-secondary);
+
+  z-index: 2;
+  // add thêm spacing
+  margin-bottom: 50vh;
   &-img {
     position: relative;
     height: 100%;
+    perspective: 1200px;
+    perspective-origin: right center;
     img {
       position: absolute;
       width: 100%;
@@ -17,15 +23,43 @@
       object-position: center right;
       pointer-events: none;
       &.map-river {
-        left: unset;
+        left: auto;
         right: -8px;
-        // transform: scale(2);
-        opacity: 0;
         transform-origin: center center;
+        opacity: 0;
+        transform: translateZ(400);
         @media (min-width: 1536px) {
           right: -10px;
         }
       }
+    }
+  }
+  &-content {
+    position: absolute;
+    z-index: 3;
+    bottom: 40px;
+    left: 24px;
+    h2 {
+      font-size: 64px;
+      line-height: 1.4;
+      font-family: var(--font-heading);
+      font-weight: 300;
+      text-align: left;
+      color: var(--color-fourth);
+      margin-bottom: 48px;
+      .line {
+        position: relative;
+        will-change: transform;
+        transform: translateY(100%);
+      }
+    }
+    p {
+      font-size: 16px;
+      line-height: 26px;
+      font-weight: 500;
+      font-family: var(--font-body);
+      color: var(--color-fourth);
+      max-width: 500px;
     }
   }
 }
