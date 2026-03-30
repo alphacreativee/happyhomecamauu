@@ -556,6 +556,21 @@ function ripplesView() {
     });
   });
 }
+function directionCols() {
+  gsap.registerPlugin(SplitText);
+  if (!document.querySelector(".direction-cols")) return;
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".direction-cols",
+      start: "top top",
+      end: "+=150%",
+      pin: true,
+      pinSpacing: false,
+      markers: true,
+    },
+  });
+}
+function overviewSection() {}
 document.addEventListener("DOMContentLoaded", () => {
   heroAnimation();
 });
@@ -574,6 +589,8 @@ const init = () => {
   marquee();
   viewSection();
   ripplesView();
+  directionCols();
+  overviewSection();
   ScrollTrigger.refresh();
 };
 preloadImages("img").then(() => {

@@ -1,0 +1,10 @@
+.direction-cols {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  background-color: var(--color-fourth);
+  overflow: hidden;
+  z-index: 2;
+  // add thêm spacing
+  margin-bottom: 50vh;
+}
