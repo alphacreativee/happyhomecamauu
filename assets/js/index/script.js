@@ -4,12 +4,14 @@ import { customDropdown, createFilterTab } from "../../main/js/global.min.js";
 $ = jQuery;
 
 const lenis = new Lenis();
+
 lenis.on("scroll", ScrollTrigger.update);
+
 gsap.ticker.add((time) => {
   lenis.raf(time * 1000);
 });
-
 gsap.ticker.lagSmoothing(0);
+
 function heroAnimation() {
   gsap.registerPlugin(SplitText);
   gsap.set(".hero-content h2", { visibility: "visible" });
@@ -19,13 +21,13 @@ function heroAnimation() {
   const splitTitle = SplitText.create(".hero-content h2", {
     type: "lines",
     mask: "lines",
-    linesClass: "line"
+    linesClass: "line",
   });
 
   tl.to(".hero-image img", {
     scale: 1,
     duration: 2,
-    ease: "power3.inOut"
+    ease: "power3.inOut",
   });
 
   tl.fromTo(
@@ -35,16 +37,16 @@ function heroAnimation() {
       y: "0%",
       duration: 0.8,
       ease: "power3.inOut",
-      stagger: 0.05
+      stagger: 0.05,
     },
-    "-=0.8"
+    "-=0.8",
   );
 }
 
 function revealClipImage() {
   document.querySelectorAll(".reveal-animation").forEach((section) => {
     const imageItems = Array.from(
-      section.querySelectorAll(".reveal-image-item")
+      section.querySelectorAll(".reveal-image-item"),
     );
 
     const bgItems = Array.from(section.querySelectorAll(".reveal-bg-item"));
@@ -61,7 +63,7 @@ function revealClipImage() {
     });
 
     gsap.set([...imageItems.slice(1), ...bgItems.slice(1)], {
-      clipPath: "inset(0 0 0 0)"
+      clipPath: "inset(0 0 0 0)",
     });
 
     const tl = gsap.timeline({
@@ -70,8 +72,10 @@ function revealClipImage() {
         start: "top top",
         end: `+=${window.innerHeight * (imageItems.length - 1)}`,
         pin: true,
-        scrub: true
-      }
+        scrub: 1,
+        anticipatePin: 1,
+        refreshPriority: 1,
+      },
     });
 
     imageItems.forEach((item, i) => {
@@ -82,9 +86,9 @@ function revealClipImage() {
         {
           clipPath: "inset(0 0 100% 0)",
           duration: 1,
-          ease: "none"
+          ease: "none",
         },
-        i
+        i,
       ); // 👈 KEY
     });
 
@@ -96,9 +100,9 @@ function revealClipImage() {
         {
           clipPath: "inset(0 0 100% 0)",
           duration: 1,
-          ease: "none"
+          ease: "none",
         },
-        i
+        i,
       ); // 👈 KEY sync
     });
   });
@@ -114,7 +118,7 @@ function animationTextHeading() {
     const splitTitle = SplitText.create(el, {
       type: "lines",
       mask: "lines",
-      linesClass: "line"
+      linesClass: "line",
     });
 
     gsap.fromTo(
@@ -129,9 +133,9 @@ function animationTextHeading() {
           trigger: el,
           start: "top 85%",
           end: "bottom 85%",
-          toggleActions: "play none none none"
-        }
-      }
+          toggleActions: "play none none none",
+        },
+      },
     );
   });
 }
@@ -153,9 +157,9 @@ function bgImageParallax() {
           trigger: el,
           start: "top bottom",
           end: "bottom top",
-          scrub: true
-        }
-      }
+          scrub: true,
+        },
+      },
     );
   });
 }
@@ -166,62 +170,83 @@ function scaleSectionAndCity() {
     scrollTrigger: {
       trigger: ".scale",
       start: "top top",
-      end: "+=100%",
+      end: "+=150%",
       pin: true,
-      pinSpacing: false
+      pinSpacing: false,
       // markers: true,
-    }
+    },
   });
   const tl1 = gsap.timeline({
     scrollTrigger: {
       trigger: ".scale",
       start: "top 30%",
-      end: "bottom top"
-    }
+      end: "bottom top",
+    },
   });
   tl1.to(".scale-image img", {
     scale: 1,
     duration: 2,
-    ease: "power3.inOut"
+    ease: "power3.inOut",
   });
   const splitContent = SplitText.create(".scale-content ul li p", {
     type: "lines",
     mask: "lines",
-    linesClass: "line"
+    linesClass: "line",
   });
   const tl2 = gsap.timeline({
     scrollTrigger: {
       trigger: ".scale-content",
       start: "top 75%",
-      end: "bottom 75%"
-    }
+      end: "bottom 75%",
+    },
   });
   tl2.fromTo(
     splitContent.lines,
     { y: "100%" },
     {
       y: "0%",
-      duration: 0.6,
+      duration: 1,
       ease: "power3.inOut",
-      stagger: 0.05
-    }
+      stagger: 0.05,
+    },
   );
-  gsap.from(".city", {
-    scrollTrigger: {
-      trigger: ".city",
-      start: "top bottom",
-      end: "top top",
-      scrub: 1
-      // markers: true,
-    }
-    // y: "30%",
-    // ease: "none",
-  });
+  // gsap.from(".city", {
+  //   scrollTrigger: {
+  //     trigger: ".city",
+  //     start: "top bottom",
+  //     end: "top top",
+  //     scrub: 1,
+  //     markers: true,
+  //   },
+
+  //   // y: "30%",
+  //   // ease: "none",
+  // });
+  // const tlCity = gsap.timeline({
+  //   scrollTrigger: {
+  //     trigger: ".city",
+  //     start: "top 50%",
+  //     end: "top top",
+  //     markers: true,
+  //   },
+  // });
+  // tlCity.fromTo(
+  //   ".city-overlay",
+  //   {
+  //     clipPath: "inset(0 0 0 0)",
+  //   },
+  //   {
+  //     clipPath: "inset(0  0 100% 0)",
+  //     ease: "none",
+  //     duration: 1,
+  //   },
+  // );
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   heroAnimation();
 });
+
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
@@ -230,6 +255,7 @@ const init = () => {
   animationTextHeading();
   bgImageParallax();
   scaleSectionAndCity();
+  ScrollTrigger.refresh();
 };
 preloadImages("img").then(() => {
   init();
