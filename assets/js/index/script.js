@@ -222,25 +222,52 @@ function scaleSectionAndCity() {
   //   // y: "30%",
   //   // ease: "none",
   // });
-  // const tlCity = gsap.timeline({
-  //   scrollTrigger: {
-  //     trigger: ".city",
-  //     start: "top 50%",
-  //     end: "top top",
-  //     markers: true,
-  //   },
-  // });
-  // tlCity.fromTo(
-  //   ".city-overlay",
-  //   {
-  //     clipPath: "inset(0 0 0 0)",
-  //   },
-  //   {
-  //     clipPath: "inset(0  0 100% 0)",
-  //     ease: "none",
-  //     duration: 1,
-  //   },
-  // );
+  const tlCity = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".city",
+      start: "top 50%",
+      end: "top top",
+      // markers: true,
+    },
+  });
+  tlCity.fromTo(
+    ".city-overlay",
+    {
+      clipPath: "inset(0 0 0 0)",
+    },
+    {
+      clipPath: "inset(0  0 100% 0)",
+      ease: "none",
+      duration: 1,
+    },
+  );
+  const splitContentCitySection = SplitText.create(".city-heading h2", {
+    type: "lines",
+    mask: "lines",
+    linesClass: "line",
+  });
+  tlCity.fromTo(
+    splitContentCitySection.lines,
+    { y: "100%" },
+    {
+      y: "0%",
+      duration: 1,
+      ease: "power3.inOut",
+      stagger: 0.05,
+    },
+  );
+  tlCity.fromTo(
+    ".city-description p",
+    {
+      opacity: 0,
+      y: 60,
+    },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+    },
+  );
 }
 
 document.addEventListener("DOMContentLoaded", () => {
