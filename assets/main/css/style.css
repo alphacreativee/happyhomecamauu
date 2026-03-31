@@ -1011,10 +1011,9 @@ body {
   z-index: 5;
 }
 .city-heading {
-  left: 0;
-  padding-left: calc(8.3333333333% + 24px);
+  left: calc(8.3333333333% + 24px);
   top: 110px;
-  max-width: 600px;
+  max-width: 500px;
   width: 100%;
 }
 .city-heading h2 {
@@ -1188,6 +1187,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 48px;
+  width: 100%;
 }
 .direction-cols .direction-image-item {
   width: 100%;

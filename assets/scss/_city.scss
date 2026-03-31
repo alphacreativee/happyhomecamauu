@@ -33,10 +33,10 @@
     z-index: 5;
   }
   &-heading {
-    left: 0;
-    padding-left: calc(calc(1 / 12) * 100% + 24px);
+    left: calc(calc(1 / 12) * 100% + 24px);
+
     top: 110px;
-    max-width: 600px;
+    max-width: 500px;
     width: 100%;
     h2 {
       font-size: 64px;
