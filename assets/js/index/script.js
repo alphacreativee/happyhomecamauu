@@ -625,7 +625,7 @@ function directionCols() {
         end: "+=200%",
         pin: true,
         pinSpacing: false,
-        markers: true,
+        // markers: true,
       },
     });
     // timeline fade content first
@@ -653,7 +653,7 @@ function directionCols() {
       },
     );
     tlf.fromTo(
-      ".el-start-txt p",
+      ".el-start-txt h6",
       {
         opacity: 0,
         y: 60,
