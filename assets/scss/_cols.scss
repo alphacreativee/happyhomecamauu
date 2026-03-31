@@ -62,6 +62,10 @@
         flex-direction: column;
         padding-left: calc((1 / 12) * 100%);
         padding-right: calc((1 / 12) * 100%);
+        h2 {
+          font-family: var(--font-heading);
+          font-size: 48px;
+        }
       }
     }
   }

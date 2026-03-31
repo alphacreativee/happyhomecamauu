@@ -1228,6 +1228,10 @@ body {
   padding-left: 8.3333333333%;
   padding-right: 8.3333333333%;
 }
+.direction-cols .direction-col.change-content .change-content-item h2 {
+  font-family: var(--font-heading);
+  font-size: 48px;
+}
 
 .overview {
   position: relative;
