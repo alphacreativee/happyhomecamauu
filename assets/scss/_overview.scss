@@ -4,4 +4,59 @@
   background-color: var(--color-secondary);
   height: 100svh;
   overflow: hidden;
+
+  &-content {
+    position: absolute;
+    z-index: 2;
+    top: 140px;
+    left: 24px;
+
+    h2 {
+      font-size: 64px;
+      line-height: 74px;
+      font-family: var(--font-heading);
+      color: #4c392b;
+
+      .line-mask {
+        line-height: 1.4;
+      }
+    }
+
+    .desc {
+      font-size: 16px;
+      line-height: 26px;
+      font-weight: 500;
+      color: #4c392b;
+      margin-top: 30px;
+    }
+  }
+
+  &-image {
+    position: relative;
+    z-index: 1;
+
+    &-list {
+      position: relative;
+      width: 100%;
+      height: 100svh;
+    }
+
+    &-item {
+      will-change: transform; /* đổi từ clip-path sang transform */
+      transform: translate3d(0, 0, 0); /* force GPU layer */
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+
+      position: absolute;
+      width: 100%;
+      min-height: 100svh;
+      height: 100%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
 }
