@@ -21,13 +21,13 @@ function heroAnimation() {
   const splitTitle = SplitText.create(".hero-content h2", {
     type: "lines",
     mask: "lines",
-    linesClass: "line"
+    linesClass: "line",
   });
 
   tl.to(".hero-image img", {
     scale: 1,
     duration: 2,
-    ease: "power3.inOut"
+    ease: "power3.inOut",
   });
 
   tl.fromTo(
@@ -37,16 +37,16 @@ function heroAnimation() {
       y: "0%",
       duration: 0.8,
       ease: "power3.inOut",
-      stagger: 0.05
+      stagger: 0.05,
     },
-    "-=0.8"
+    "-=0.8",
   );
 }
 
 function revealClipImage() {
   document.querySelectorAll(".reveal-animation").forEach((section) => {
     const imageItems = Array.from(
-      section.querySelectorAll(".reveal-image-item")
+      section.querySelectorAll(".reveal-image-item"),
     );
 
     const bgItems = Array.from(section.querySelectorAll(".reveal-bg-item"));
@@ -57,7 +57,7 @@ function revealClipImage() {
       top: "-50%",
       left: "50%",
       xPercent: -50,
-      yPercent: -50
+      yPercent: -50,
     });
 
     gsap.to(circle, {
@@ -68,9 +68,9 @@ function revealClipImage() {
         trigger: section,
         start: "top bottom",
         end: "top top",
-        scrub: 1
+        scrub: 1,
         // markers: true
-      }
+      },
     });
 
     // stack image
@@ -84,7 +84,7 @@ function revealClipImage() {
     });
 
     gsap.set([...imageItems.slice(1), ...bgItems.slice(1)], {
-      clipPath: "inset(0 0 0 0)"
+      clipPath: "inset(0 0 0 0)",
     });
 
     const tl = gsap.timeline({
@@ -94,10 +94,10 @@ function revealClipImage() {
         end: `+=${window.innerHeight * (imageItems.length - 1)}`,
         pin: true,
         scrub: 1,
-        anticipatePin: 1
+        anticipatePin: 1,
         // refreshPriority: 1,
         // markers: true
-      }
+      },
     });
 
     imageItems.forEach((item, i) => {
@@ -108,9 +108,9 @@ function revealClipImage() {
         {
           clipPath: "inset(0 0 100% 0)",
           duration: 1,
-          ease: "none"
+          ease: "none",
         },
-        i
+        i,
       ); // 👈 KEY
     });
 
@@ -122,9 +122,9 @@ function revealClipImage() {
         {
           clipPath: "inset(0 0 100% 0)",
           duration: 1,
-          ease: "none"
+          ease: "none",
         },
-        i
+        i,
       );
     });
   });
@@ -151,7 +151,7 @@ function partnerSection() {
     xPercent: -50,
     yPercent: -50,
     opacity: 0,
-    scale: 0.6
+    scale: 0.6,
   });
 
   gsap.to(circle, {
@@ -163,8 +163,8 @@ function partnerSection() {
       start: "top+=140% top",
       endTrigger: ".reveal-animation",
       end: "top+=100vh top",
-      scrub: 1
-    }
+      scrub: 1,
+    },
   });
 
   const extraScroll = window.innerHeight * 0.5;
@@ -177,8 +177,8 @@ function partnerSection() {
       pin: true,
       scrub: 1,
       anticipatePin: 1,
-      pinSpacing: false
-    }
+      pinSpacing: false,
+    },
   });
 
   // 1. Image fade
@@ -187,9 +187,9 @@ function partnerSection() {
     {
       opacity: 1,
       ease: "none",
-      duration: 0.4
+      duration: 0.4,
     },
-    0
+    0,
   );
 
   // 🎬 2. Desc + hide title + circle (80%)
@@ -198,18 +198,18 @@ function partnerSection() {
     {
       opacity: 1,
       duration: 0.3,
-      ease: "power1.out"
+      ease: "power1.out",
     },
-    0.8
+    0.8,
   );
 
   tl.to(
     title,
     {
       opacity: 0,
-      duration: 0.4
+      duration: 0.4,
     },
-    0
+    0,
   );
 
   tl.to(
@@ -218,9 +218,9 @@ function partnerSection() {
       opacity: 0.9,
       scale: 1,
       duration: 0.5,
-      ease: "power2.out"
+      ease: "power2.out",
     },
-    0.3
+    0.3,
   );
 
   // 2. Desc + hide title + circle (80%)
@@ -229,9 +229,9 @@ function partnerSection() {
     {
       opacity: 1,
       duration: 0.3,
-      ease: "power1.out"
+      ease: "power1.out",
     },
-    0.5
+    0.5,
   );
 
   tl.to(
@@ -239,16 +239,16 @@ function partnerSection() {
     {
       opacity: 0,
       duration: 0.3,
-      ease: "power2.out"
+      ease: "power2.out",
     },
-    1
+    1,
   )
 
     .to(panel2, {
       opacity: 1,
       pointerEvents: "auto",
       duration: 0.3,
-      ease: "power2.out"
+      ease: "power2.out",
     });
 }
 
@@ -281,7 +281,7 @@ function marquee() {
     gsap.set(content, {
       x: 0,
       willChange: "transform",
-      force3D: true
+      force3D: true,
     });
 
     const tl = gsap.timeline({ repeat: -1 });
@@ -290,8 +290,8 @@ function marquee() {
       duration: totalWidth / speed,
       ease: "none",
       modifiers: {
-        x: (x) => `${parseFloat(x) % totalWidth}px`
-      }
+        x: (x) => `${parseFloat(x) % totalWidth}px`,
+      },
     });
 
     // Hover pause
@@ -314,7 +314,7 @@ function animationTextHeading() {
     const splitTitle = SplitText.create(el, {
       type: "lines",
       mask: "lines",
-      linesClass: "line"
+      linesClass: "line",
     });
 
     gsap.fromTo(
@@ -329,9 +329,9 @@ function animationTextHeading() {
           trigger: el,
           start: "top 85%",
           end: "bottom 85%",
-          toggleActions: "play none none none"
-        }
-      }
+          toggleActions: "play none none none",
+        },
+      },
     );
   });
 }
@@ -353,9 +353,9 @@ function bgImageParallax() {
           trigger: el,
           start: "top bottom",
           end: "bottom top",
-          scrub: true
-        }
-      }
+          scrub: true,
+        },
+      },
     );
   });
 }
@@ -369,33 +369,33 @@ function scaleSection() {
       start: "top top",
       end: "+=150%",
       pin: true,
-      pinSpacing: false
+      pinSpacing: false,
       // markers: true,
-    }
+    },
   });
   const tl1 = gsap.timeline({
     scrollTrigger: {
       trigger: ".scale",
       start: "top 30%",
-      end: "bottom top"
-    }
+      end: "bottom top",
+    },
   });
   tl1.to(".scale-image img", {
     scale: 1,
     duration: 2,
-    ease: "power3.inOut"
+    ease: "power3.inOut",
   });
   const splitContent = SplitText.create(".scale-content ul li p", {
     type: "lines",
     mask: "lines",
-    linesClass: "line"
+    linesClass: "line",
   });
   const tl2 = gsap.timeline({
     scrollTrigger: {
       trigger: ".scale-content",
       start: "top 75%",
-      end: "bottom 75%"
-    }
+      end: "bottom 75%",
+    },
   });
   tl2.fromTo(
     splitContent.lines,
@@ -404,8 +404,8 @@ function scaleSection() {
       y: "0%",
       duration: 1,
       ease: "power3.inOut",
-      stagger: 0.05
-    }
+      stagger: 0.05,
+    },
   );
   // gsap.from(".city", {
   //   scrollTrigger: {
@@ -426,25 +426,25 @@ function citySection() {
     scrollTrigger: {
       trigger: ".city",
       start: "top 50%",
-      end: "top top"
+      end: "top top",
       // markers: true,
-    }
+    },
   });
   tlCity.fromTo(
     ".city-overlay",
     {
-      clipPath: "inset(0 0 0 0)"
+      clipPath: "inset(0 0 0 0)",
     },
     {
       clipPath: "inset(0  0 100% 0)",
       ease: "none",
-      duration: 1
-    }
+      duration: 1,
+    },
   );
   const splitContentCitySection = SplitText.create(".city-heading h2", {
     type: "lines",
     mask: "lines",
-    linesClass: "line"
+    linesClass: "line",
   });
   tlCity.fromTo(
     splitContentCitySection.lines,
@@ -453,22 +453,22 @@ function citySection() {
       y: "0%",
       duration: 1,
       ease: "power3.inOut",
-      stagger: 0.05
+      stagger: 0.05,
     },
-    "-=0.6"
+    "-=0.6",
   );
   tlCity.fromTo(
     ".city-description p",
     {
       opacity: 0,
-      y: 60
+      y: 60,
     },
     {
       opacity: 1,
       y: 0,
-      duration: 0.8
+      duration: 0.8,
     },
-    "-=0.6"
+    "-=0.6",
   );
 }
 function mapAnimation() {
@@ -478,27 +478,27 @@ function mapAnimation() {
       start: "top top",
       end: "+=150%",
       pin: true,
-      pinSpacing: false
+      pinSpacing: false,
       // markers: true,
-    }
+    },
   });
   const splitContentCitySection = SplitText.create(".map-content h2", {
     type: "lines",
     mask: "lines",
-    linesClass: "line"
+    linesClass: "line",
   });
   tlMap.fromTo(
     ".map-img .map-river",
     {
       opacity: 0,
-      z: 400
+      z: 400,
     },
     {
       opacity: 1,
       z: 0,
       duration: 1,
-      ease: "power3.inOut"
-    }
+      ease: "power3.inOut",
+    },
   );
   tlMap.fromTo(
     splitContentCitySection.lines,
@@ -507,23 +507,23 @@ function mapAnimation() {
       y: "0%",
       duration: 1,
       ease: "power3.inOut",
-      stagger: 0.05
+      stagger: 0.05,
     },
-    "-=0.6"
+    "-=0.6",
   );
 
   tlMap.fromTo(
     ".map-content p",
     {
       opacity: 0,
-      y: 60
+      y: 60,
     },
     {
       opacity: 1,
       y: 0,
-      duration: 0.8
+      duration: 0.8,
     },
-    "-=0.6"
+    "-=0.6",
   );
 }
 function viewSection() {
@@ -532,20 +532,20 @@ function viewSection() {
     scrollTrigger: {
       trigger: ".view",
       start: "top 50%",
-      end: "top top"
+      end: "top top",
       // markers: true,
-    }
+    },
   });
   tlView.to(".view-image img", {
     scale: 1,
     duration: 2,
-    ease: "power3.inOut"
+    ease: "power3.inOut",
   });
 
   const splitContentView = SplitText.create(".view-content h2", {
     type: "lines",
     mask: "lines",
-    linesClass: "line"
+    linesClass: "line",
   });
   tlView.fromTo(
     splitContentView.lines,
@@ -554,22 +554,22 @@ function viewSection() {
       y: "0%",
       duration: 1,
       ease: "power3.inOut",
-      stagger: 0.05
+      stagger: 0.05,
     },
-    "-=1.6"
+    "-=1.6",
   );
   tlView.fromTo(
     ".view-content p",
     {
       opacity: 0,
-      y: 60
+      y: 60,
     },
     {
       opacity: 1,
       y: 0,
-      duration: 0.8
+      duration: 0.8,
     },
-    "-=1.0"
+    "-=1.0",
   );
 }
 function ripplesView() {
@@ -580,7 +580,7 @@ function ripplesView() {
     interactive: true,
     dropRadius: 60,
     crossOrigin: "",
-    strength0: 0.003
+    strength0: 0.003,
   });
   const $el = $(".view-image");
 
@@ -597,7 +597,7 @@ function ripplesView() {
       backgroundPositionX: `${moveX}%`,
       backgroundPositionY: `${moveY}%`,
       duration: 1.2,
-      ease: "power2.out"
+      ease: "power2.out",
     });
   });
 
@@ -606,22 +606,128 @@ function ripplesView() {
       backgroundPositionX: "50%",
       backgroundPositionY: "50%",
       duration: 1.5,
-      ease: "power2.out"
+      ease: "power2.out",
     });
   });
 }
 function directionCols() {
   gsap.registerPlugin(SplitText);
   if (!document.querySelector(".direction-cols")) return;
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".direction-cols",
+  const ITEM_HEIGHT = 470;
+  const GAP = 48;
+  const NUM_ITEMS = 4;
+  const scrollDistance = ITEM_HEIGHT * (NUM_ITEMS - 1) - GAP;
+  document.querySelectorAll(".direction-cols").forEach((section) => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top top",
+        end: "+=200%",
+        pin: true,
+        pinSpacing: false,
+        markers: true,
+      },
+    });
+    // timeline fade content first
+    const tlf = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 50%",
+        end: "bottom 50%",
+        // markers: true,
+      },
+    });
+    const splitTxt = SplitText.create(".el-start-txt h2", {
+      type: "lines",
+      mask: "lines",
+      linesClass: "line",
+    });
+    tlf.fromTo(
+      splitTxt.lines,
+      { y: "100%" },
+      {
+        y: "0%",
+        duration: 1,
+        ease: "power3.inOut",
+        stagger: 0.05,
+      },
+    );
+    tlf.fromTo(
+      ".el-start-txt p",
+      {
+        opacity: 0,
+        y: 60,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+      },
+      "-=0.5",
+    );
+    // timeline animation
+    const scrollConfig = {
+      trigger: section,
       start: "top top",
       end: "+=150%",
-      pin: true,
-      pinSpacing: false,
-      markers: true
+      invalidateOnRefresh: true,
+    };
+    const contentsItem = section.querySelectorAll(".change-content-item");
+    const itemsContentArray = Array.from(contentsItem);
+    const total = itemsContentArray.length;
+    let currentIndex = 0;
+    gsap.set(itemsContentArray.slice(1), { opacity: 0 });
+    function showItem(index) {
+      if (index === currentIndex) return;
+
+      // Kill animation đang chạy dở của 2 item liên quan
+      gsap.killTweensOf(itemsContentArray[currentIndex]);
+      gsap.killTweensOf(itemsContentArray[index]);
+
+      gsap.to(itemsContentArray[currentIndex], { opacity: 0, duration: 0.3 });
+      gsap.to(itemsContentArray[index], {
+        opacity: 1,
+        duration: 0.5,
+        delay: 0.3,
+      });
+
+      currentIndex = index;
     }
+    ScrollTrigger.create({
+      ...scrollConfig,
+      // pin: true,
+      anticipatePin: 1,
+      onUpdate: (self) => {
+        const index = Math.min(Math.floor(self.progress * total), total - 1);
+        showItem(index);
+      },
+    });
+    const animations = [
+      {
+        target: section.querySelector(
+          ".direction-col:first-child .direction-list-image",
+        ),
+        vars: { y: scrollDistance },
+      },
+      {
+        target: section.querySelector(
+          ".direction-col:last-child .direction-list-image",
+        ),
+        vars: { y: -scrollDistance },
+      },
+      {
+        target: section.querySelectorAll(".direction-col .direction-item img"),
+        vars: { xPercent: -10 },
+      },
+    ];
+
+    animations.forEach(({ target, vars }) => {
+      gsap.to(target, {
+        ...vars,
+        ease: "none",
+        scrollTrigger: { ...scrollConfig, scrub: 1 },
+      });
+    });
   });
 }
 function overviewSection() {}

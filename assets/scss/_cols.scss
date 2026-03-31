@@ -6,7 +6,7 @@
   overflow: hidden;
   z-index: 2;
   // add thêm spacing
-  margin-bottom: 50vh;
+  margin-bottom: 100vh;
   .direction-inner {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
@@ -62,9 +62,24 @@
         flex-direction: column;
         padding-left: calc((1 / 12) * 100%);
         padding-right: calc((1 / 12) * 100%);
+        text-align: center;
+        &.el-start-txt {
+          h2 {
+            line-height: 1.4;
+            .line {
+              position: relative;
+              will-change: transform;
+              transform: translateY(100%);
+            }
+          }
+        }
         h2 {
           font-family: var(--font-heading);
           font-size: 48px;
+          line-height: 56px;
+          font-weight: 300;
+          text-align: center;
+          margin-bottom: 48px;
         }
       }
     }
