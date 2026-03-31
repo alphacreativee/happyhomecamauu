@@ -613,11 +613,14 @@ function ripplesView() {
 function directionCols() {
   gsap.registerPlugin(SplitText);
   if (!document.querySelector(".direction-cols")) return;
-  const ITEM_HEIGHT = 470;
-  const GAP = 48;
-  const NUM_ITEMS = 4;
-  const scrollDistance = ITEM_HEIGHT * (NUM_ITEMS - 1) - GAP;
+  const PADDING = 48;
+
   document.querySelectorAll(".direction-cols").forEach((section) => {
+    function calcScrollDistance(listEl) {
+      const sectionRect = section.getBoundingClientRect();
+      const listRect = listEl.getBoundingClientRect();
+      return listRect.height - (sectionRect.height - PADDING * 2);
+    }
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
@@ -707,13 +710,27 @@ function directionCols() {
         target: section.querySelector(
           ".direction-col:first-child .direction-list-image",
         ),
-        vars: { y: scrollDistance },
+        vars: {
+          y: () =>
+            calcScrollDistance(
+              section.querySelector(
+                ".direction-col:first-child .direction-list-image",
+              ),
+            ),
+        },
       },
       {
         target: section.querySelector(
           ".direction-col:last-child .direction-list-image",
         ),
-        vars: { y: -scrollDistance },
+        vars: {
+          y: () =>
+            -calcScrollDistance(
+              section.querySelector(
+                ".direction-col:last-child .direction-list-image",
+              ),
+            ),
+        },
       },
       {
         target: section.querySelectorAll(".direction-col .direction-item img"),
