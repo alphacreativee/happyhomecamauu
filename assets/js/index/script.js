@@ -902,6 +902,17 @@ function introSection() {
     parallaxTl.fromTo(img, { yPercent: -5 }, { yPercent: 5, ease: "none" });
   }
 }
+
+function footer() {
+  const footer = document.querySelector(".footer-container");
+  const heightOverlay = document.querySelector(".footer-overlay");
+  if (!footer) return;
+
+  const heightFooter = footer.offsetHeight;
+
+  heightOverlay.style.height = `${heightFooter}px`;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   heroAnimation();
 });
@@ -924,6 +935,7 @@ const init = () => {
   sectionOverview();
   ctaRun();
   introSection();
+  footer();
   ScrollTrigger.refresh();
 };
 preloadImages("img").then(() => {
