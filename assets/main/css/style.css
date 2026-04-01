@@ -289,6 +289,10 @@ body {
   line-height: 24px;
   color: var(--color-fourth);
   font-weight: 600;
+  transition: color 0.3s ease;
+}
+#header .header-vr .cta-vr:hover {
+  color: var(--color-fifth);
 }
 
 .footer {
@@ -1028,7 +1032,7 @@ body {
 .city-heading {
   left: calc(8.3333333333% + 24px);
   top: 110px;
-  max-width: 500px;
+  max-width: 450px;
   width: 100%;
 }
 .city-heading h2 {
