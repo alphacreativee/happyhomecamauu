@@ -487,19 +487,19 @@ function mapAnimation() {
     mask: "lines",
     linesClass: "line",
   });
-  tlMap.fromTo(
-    ".map-img .map-river",
-    {
-      opacity: 0,
-      z: 400,
-    },
-    {
-      opacity: 1,
-      z: 0,
-      duration: 1,
-      ease: "power3.inOut",
-    },
-  );
+  // tlMap.fromTo(
+  //   ".map-img .map-river",
+  //   {
+  //     opacity: 0,
+  //     z: 400,
+  //   },
+  //   {
+  //     opacity: 1,
+  //     z: 0,
+  //     duration: 1,
+  //     ease: "power3.inOut",
+  //   },
+  // );
   tlMap.fromTo(
     splitContentCitySection.lines,
     { y: "100%" },
@@ -509,7 +509,6 @@ function mapAnimation() {
       ease: "power3.inOut",
       stagger: 0.05,
     },
-    "-=0.6",
   );
 
   tlMap.fromTo(
@@ -523,7 +522,7 @@ function mapAnimation() {
       y: 0,
       duration: 0.8,
     },
-    "-=0.6",
+    "-=0.5",
   );
 }
 function viewSection() {

@@ -1084,8 +1084,6 @@ body {
   left: auto;
   right: -8px;
   transform-origin: center center;
-  opacity: 0;
-  transform: translateZ(400);
 }
 @media (min-width: 1536px) {
   .map-img img.map-river {
