@@ -339,7 +339,6 @@ function bgImageParallax() {
   document.querySelectorAll(".bg-parallax").forEach((el) => {
     if (el.dataset.scriptInitialized) return;
     el.dataset.scriptInitialized = "true";
-
     const img = el.querySelector("img");
     if (!img) return;
     const percentParallax = 30;
@@ -855,6 +854,42 @@ function ctaRun() {
     },
   });
 }
+function introSection() {
+  if (!document.querySelector(".intro")) return;
+
+  const img = document.querySelector(".intro-image");
+
+  const mainTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".intro",
+      start: "top top",
+      end: "+=100%",
+      pin: true,
+      pinSpacing: false,
+      scrub: true,
+    },
+  });
+
+  mainTl.fromTo(
+    ".intro-gradient",
+    { yPercent: 0 },
+    { yPercent: -50, ease: "none" },
+    0,
+  );
+
+  if (img) {
+    const parallaxTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".intro",
+        start: "top top",
+        end: "+=100%",
+        scrub: true,
+      },
+    });
+
+    parallaxTl.fromTo(img, { yPercent: -5 }, { yPercent: 5, ease: "none" });
+  }
+}
 document.addEventListener("DOMContentLoaded", () => {
   heroAnimation();
 });
@@ -865,7 +900,7 @@ const init = () => {
   createFilterTab();
   revealClipImage();
   animationTextHeading();
-  bgImageParallax();
+  // bgImageParallax();
   scaleSection();
   citySection();
   mapAnimation();
@@ -876,6 +911,7 @@ const init = () => {
   directionCols();
   sectionOverview();
   ctaRun();
+  introSection();
   ScrollTrigger.refresh();
 };
 preloadImages("img").then(() => {

@@ -3,21 +3,50 @@
   width: 100%;
   height: 100svh;
   overflow: hidden;
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
+  z-index: 1;
+  // margin-bottom: 20vh;
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   background: linear-gradient(
+  //     180deg,
+  //     rgba(90, 69, 54, 0) -2.08%,
+  //     #5a4536 91.51%
+  //   );
+  //   z-index: 2;
+  //   pointer-events: none;
+  // }
+  &-image {
     width: 100%;
     height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.1);
+      transform-origin: center;
+    }
+  }
+  &-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200%;
     background: linear-gradient(
       180deg,
-      rgba(90, 69, 54, 0) -2.08%,
-      #5a4536 91.51%
+      rgba(90, 69, 54, 0) 75%,
+
+      #5a4536 97.51%
     );
-    z-index: 2;
+    z-index: 6;
     pointer-events: none;
   }
+
   &-content {
     position: absolute;
     top: 50%;

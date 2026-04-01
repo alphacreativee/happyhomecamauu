@@ -13,10 +13,10 @@
   &-content-box {
     position: absolute;
     right: 24px;
-    top: 24px;
-    bottom: 24px;
+    top: 48px;
+    bottom: 48px;
     z-index: 4;
-    height: calc(100svh - 48px);
+    height: calc(100svh - 96px);
     background-image: url("../../images/icons/pattern-view.png");
     background-size: 100% 100%;
     background-position: center center;
