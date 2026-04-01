@@ -39,7 +39,7 @@
     .column-title {
       font-size: 13px;
       line-height: 20px;
-      font-weight: bold;
+      font-weight: 300;
       font-family: var(--font-heading);
       margin-bottom: 20px;
     }
@@ -60,7 +60,7 @@
           & > a {
             font-size: 13px;
             line-height: 20px;
-            font-weight: bold;
+            font-weight: 300;
             font-family: var(--font-heading);
             display: block;
             margin-bottom: 20px;
@@ -163,7 +163,7 @@
       margin-left: 32px;
       font-size: 13px;
       line-height: 15px;
-      font-weight: 600;
+      font-weight: 300;
       font-family: var(--font-heading);
       color: var(--color-fourth);
       text-transform: uppercase;

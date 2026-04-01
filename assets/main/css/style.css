@@ -334,7 +334,7 @@ body {
 .footer-main .column-title {
   font-size: 13px;
   line-height: 20px;
-  font-weight: bold;
+  font-weight: 300;
   font-family: var(--font-heading);
   margin-bottom: 20px;
 }
@@ -351,7 +351,7 @@ body {
 .footer-menu .menu > ul .menu-item-has-children > a {
   font-size: 13px;
   line-height: 20px;
-  font-weight: bold;
+  font-weight: 300;
   font-family: var(--font-heading);
   display: block;
   margin-bottom: 20px;
@@ -433,7 +433,7 @@ body {
   margin-left: 32px;
   font-size: 13px;
   line-height: 15px;
-  font-weight: 600;
+  font-weight: 300;
   font-family: var(--font-heading);
   color: var(--color-fourth);
   text-transform: uppercase;
@@ -742,6 +742,7 @@ body {
   line-height: 74px;
   color: var(--color-third);
   font-family: var(--font-heading);
+  font-weight: 300;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -753,6 +754,7 @@ body {
 .partner .panel-1 .desc {
   font-size: 48px;
   line-height: 56px;
+  font-weight: 300;
   color: var(--color-fourth);
   font-family: var(--font-heading);
   text-align: center;
@@ -789,6 +791,7 @@ body {
 .partner .panel-2 h2 {
   font-size: 48px;
   line-height: 56px;
+  font-weight: 300;
   color: var(--color-fourth);
   font-family: var(--font-heading);
   text-align: center;
@@ -814,11 +817,11 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 900px;
-  height: 900px;
+  width: 2360px;
+  height: 2360px;
   border-radius: 50%;
-  background: radial-gradient(circle, #3e5620 30%, #1a2e0d 80%);
-  filter: blur(30px);
+  background: radial-gradient(50% 50% at 50% 50%, #3e5620 26%, rgba(62, 86, 32, 0) 100%);
+  filter: blur(20px);
   opacity: 0;
   z-index: 2;
   pointer-events: none;
@@ -838,8 +841,10 @@ body {
   height: 430px;
   border: 1px solid rgba(225, 205, 173, 0.3);
   position: relative;
-  border-radius: 8px;
   overflow: hidden;
+}
+.marquee-item .text {
+  text-align: center;
 }
 .marquee-item .gallery-img {
   display: flex;
@@ -865,7 +870,7 @@ body {
   inset: 0;
   z-index: 2;
   transition: opacity 0.4s ease;
-  background: rgba(139, 156, 118, 0.2);
+  background-color: rgba(62, 86, 32, 0.6);
   backdrop-filter: blur(20px);
 }
 .marquee-item:hover .gallery-img__back {
@@ -1300,10 +1305,9 @@ body {
 .overview-content h2 {
   font-size: 64px;
   line-height: 74px;
+  font-weight: 300;
   font-family: var(--font-heading);
   color: #4c392b;
-}
-.overview-content h2 .line-mask {
   line-height: 1.4;
 }
 .overview-content .desc {
