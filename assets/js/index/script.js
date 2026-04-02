@@ -79,11 +79,11 @@ function revealClipImage() {
     });
 
     // stack bg
-    bgItems.forEach((item, i) => {
-      item.style.zIndex = bgItems.length - i;
-    });
+    // bgItems.forEach((item, i) => {
+    //   item.style.zIndex = bgItems.length - i;
+    // });
 
-    gsap.set([...imageItems.slice(1), ...bgItems.slice(1)], {
+    gsap.set([...imageItems.slice(1)], {
       clipPath: "inset(0 0 0 0)"
     });
 
@@ -114,19 +114,19 @@ function revealClipImage() {
       ); // 👈 KEY
     });
 
-    bgItems.forEach((item, i) => {
-      if (i === 0) return;
+    // bgItems.forEach((item, i) => {
+    //   if (i === 0) return;
 
-      tl.to(
-        bgItems[i - 1],
-        {
-          clipPath: "inset(0 0 100% 0)",
-          duration: 1,
-          ease: "none"
-        },
-        i
-      );
-    });
+    //   tl.to(
+    //     bgItems[i - 1],
+    //     {
+    //       clipPath: "inset(0 0 100% 0)",
+    //       duration: 1,
+    //       ease: "none"
+    //     },
+    //     i
+    //   );
+    // });
   });
 }
 
