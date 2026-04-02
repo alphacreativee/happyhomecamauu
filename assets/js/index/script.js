@@ -941,7 +941,7 @@ function footer() {
           opacity: 1,
           x: 0,
           y: 0,
-          duration: 0.8,
+          duration: 0.6,
           ease: "power3.out"
         });
       }
