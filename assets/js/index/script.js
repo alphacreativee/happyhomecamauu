@@ -623,7 +623,7 @@ function directionCols() {
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: "+=200%",
+        end: "+=250%",
         pin: true,
         pinSpacing: false,
         // markers: true,

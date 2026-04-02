@@ -1215,7 +1215,7 @@ main {
   background-color: var(--color-fourth);
   overflow: hidden;
   z-index: 2;
-  margin-bottom: 100vh;
+  margin-bottom: 150vh;
 }
 .direction-cols .direction-inner {
   display: grid;
