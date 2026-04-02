@@ -1162,6 +1162,10 @@ main {
   transition: fill 0.3s ease;
 }
 
+.river-runner {
+  stroke: #7dd3fc;
+}
+
 .view {
   position: relative;
   z-index: 3;

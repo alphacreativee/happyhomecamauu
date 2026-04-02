@@ -499,7 +499,7 @@ function mapAnimation() {
 
   gsap.fromTo(
     fill,
-    { fillOpacity: 0.15 },
+    { fillOpacity: 0.45 },
     {
       fillOpacity: 1,
       duration: DURATION / 2,
@@ -1026,3 +1026,34 @@ window.addEventListener("beforeunload", () => {
   if (!isLinkClicked) window.scrollTo(0, 0);
   isLinkClicked = false;
 });
+const runner = document.querySelector(".river-runner");
+const riverPath = document.querySelector(".river-path");
+const totalLength = runner.getTotalLength();
+const runnerLength = 120; // đoạn sáng dài hơn vì path con sông dài
+
+gsap.set(runner, {
+  strokeDasharray: `${runnerLength} ${totalLength - runnerLength}`,
+  strokeDashoffset: 0,
+  stroke: "#7dd3fc", // xanh nước nhạt
+});
+
+// Runner chạy dọc sông
+gsap.to(runner, {
+  strokeDashoffset: -totalLength,
+  duration: 4, // chậm hơn cho cảm giác dòng chảy
+  ease: "none",
+  repeat: -1,
+});
+
+// Fill pulse nhẹ theo dòng chảy
+gsap.fromTo(
+  riverPath,
+  { opacity: 0.75 },
+  {
+    opacity: 1,
+    duration: 2,
+    ease: "sine.inOut",
+    repeat: -1,
+    yoyo: true,
+  },
+);

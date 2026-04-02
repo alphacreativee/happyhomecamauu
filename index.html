@@ -89,6 +89,9 @@
   <header id="header"></header>
   <!-- end header -->
   <main>
+
+
+
     <section class="hero">
       <div class="container-fluid p-0 hero-wrapper h-100">
         <div class="hero-image">
@@ -167,7 +170,8 @@
                   fill="#E1CDAD" />
                 <path class="field-dat-runner"
                   d="M815.614 226.468L882.032 340.365C884.925 345.325 891.273 347.052 896.279 344.228L964.424 305.815C969.511 302.944 971.285 296.48 968.379 291.427L903.805 179.035C900.981 174.134 894.797 172.337 889.791 174.975L819.803 211.882C814.517 214.671 812.615 221.311 815.625 226.48L815.614 226.468Z"
-                  fill="none" stroke="#e1cdad" stroke-width="1" stroke-linecap="round" />
+                  fill="none" stroke="#e1cdad" stroke-width="1" stroke-linecap="round" filter="url(#neon-glow)" />
+
                 <path
                   d="M828.589 266.281C841.465 266.281 851.903 255.843 851.903 242.967C851.903 230.091 841.465 219.653 828.589 219.653C815.713 219.653 805.275 230.091 805.275 242.967C805.275 255.843 815.713 266.281 828.589 266.281Z"
                   fill="#5A4537" />
@@ -188,6 +192,17 @@
                   fill="#ECDFCA" />
               </g>
               <defs>
+                <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur1" />
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur2" />
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur3" />
+                  <feMerge>
+                    <feMergeNode in="blur3" />
+                    <feMergeNode in="blur2" />
+                    <feMergeNode in="blur1" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
                 <linearGradient id="paint0_linear_995_1025" x1="840.472" y1="229.418" x2="817.075" y2="256.181"
                   gradientUnits="userSpaceOnUse">
                   <stop stop-color="#FDCD9F" />
@@ -468,77 +483,81 @@
         <div class="reveal-image">
           <div class="reveal-image-list">
             <div class="reveal-image-item" style="--bg-card: #4c392b">
-              <img src="./assets/images/draf/bg-reveal-1.jpg" loading="lazy" alt=""> 
+              <img src="./assets/images/draf/bg-reveal-1.jpg" loading="lazy" alt="">
               <div class="card-item">
                 <div class="image">
-                <img src="./assets/images/draf/reveal-1.jpg" loading="lazy" alt="" />
-              </div>
-
-              <div class="content">
-                <div class="number">1.</div>
-                <div class="desc">
-                  Tâm điểm đô thị kiểu mẫu mới - Sở hữu lâu dài, liền kề trung
-                  tâm hành chính & sân bay.
+                  <img src="./assets/images/draf/reveal-1.jpg" loading="lazy" alt="" />
                 </div>
-              </div>
+
+                <div class="content">
+                  <div class="number">1.</div>
+                  <div class="desc">
+                    Tâm điểm đô thị kiểu mẫu mới - Sở hữu lâu dài, liền kề trung
+                    tâm hành chính & sân bay.
+                  </div>
+                </div>
               </div>
             </div>
             <div class="reveal-image-item" style="--bg-card: #344415">
-              <img src="./assets/images/draf/bg-reveal-2.jpg" loading="lazy" alt=""> 
-              <div class="card-item"><div class="image">
-                <img src="./assets/images/draf/reveal-2.jpg" loading="lazy" alt="" />
-              </div>
-              <div class="content">
-                <div class="number">2.</div>
-                <div class="desc">
-                  Hạ tầng giao thông bứt phá – kết nối liên vùng, đón đầu dòng
-                  chảy kinh tế.
+              <img src="./assets/images/draf/bg-reveal-2.jpg" loading="lazy" alt="">
+              <div class="card-item">
+                <div class="image">
+                  <img src="./assets/images/draf/reveal-2.jpg" loading="lazy" alt="" />
                 </div>
-              </div></div>
+                <div class="content">
+                  <div class="number">2.</div>
+                  <div class="desc">
+                    Hạ tầng giao thông bứt phá – kết nối liên vùng, đón đầu dòng
+                    chảy kinh tế.
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="reveal-image-item" style="--bg-card: #4B1610">
-              <img src="./assets/images/draf/bg-reveal-1.jpg" loading="lazy" alt=""> 
-              <div class="card-item"><div class="image">
-                <img src="./assets/images/draf/reveal-3.jpg" loading="lazy" alt="" />
-              </div>
-
-              <div class="content">
-                <div class="number">3.</div>
-                <div class="desc">
-                  Động lực tăng trưởng mới của Cà Mau – hưởng lợi từ quy hoạch
-                  & định hướng phát triển.
-                </div>
-              </div></div>
-            </div>
-            <div class="reveal-image-item" style="--bg-card: #344415">
-              <img src="./assets/images/draf/bg-reveal-2.jpg" loading="lazy" alt=""> 
+              <img src="./assets/images/draf/bg-reveal-1.jpg" loading="lazy" alt="">
               <div class="card-item">
                 <div class="image">
-                <img src="./assets/images/draf/reveal-4.jpg" loading="lazy" alt="" />
-              </div>
+                  <img src="./assets/images/draf/reveal-3.jpg" loading="lazy" alt="" />
+                </div>
 
-              <div class="content">
-                <div class="number">4.</div>
-                <div class="desc">
-                  Tâm điểm kinh tế biển & năng lượng – thu hút chuyên gia, gia
-                  tăng giá trị bền vững.
+                <div class="content">
+                  <div class="number">3.</div>
+                  <div class="desc">
+                    Động lực tăng trưởng mới của Cà Mau – hưởng lợi từ quy hoạch
+                    & định hướng phát triển.
+                  </div>
                 </div>
               </div>
+            </div>
+            <div class="reveal-image-item" style="--bg-card: #344415">
+              <img src="./assets/images/draf/bg-reveal-2.jpg" loading="lazy" alt="">
+              <div class="card-item">
+                <div class="image">
+                  <img src="./assets/images/draf/reveal-4.jpg" loading="lazy" alt="" />
+                </div>
+
+                <div class="content">
+                  <div class="number">4.</div>
+                  <div class="desc">
+                    Tâm điểm kinh tế biển & năng lượng – thu hút chuyên gia, gia
+                    tăng giá trị bền vững.
+                  </div>
+                </div>
               </div>
             </div>
             <div class="reveal-image-item" style="--bg-card: #4c392b">
-              <img src="./assets/images/draf/bg-reveal-1.jpg" loading="lazy" alt=""> 
+              <img src="./assets/images/draf/bg-reveal-1.jpg" loading="lazy" alt="">
               <div class="card-item">
                 <div class="image">
-                <img src="./assets/images/draf/reveal-5.jpg" loading="lazy" alt="" />
-              </div>
-
-              <div class="content">
-                <div class="number">5.</div>
-                <div class="desc">
-                  Cửa ngõ giao thương quốc tế – đón đầu tiềm năng cảng nước sâu Hòn Khoai.
+                  <img src="./assets/images/draf/reveal-5.jpg" loading="lazy" alt="" />
                 </div>
-              </div>
+
+                <div class="content">
+                  <div class="number">5.</div>
+                  <div class="desc">
+                    Cửa ngõ giao thương quốc tế – đón đầu tiềm năng cảng nước sâu Hòn Khoai.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
