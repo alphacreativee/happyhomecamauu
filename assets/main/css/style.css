@@ -922,11 +922,11 @@ main {
 }
 .intro-gradient {
   position: absolute;
-  bottom: 0;
+  bottom: 0vh;
   left: 0;
   width: 100%;
   height: 200%;
-  background: linear-gradient(180deg, rgba(90, 69, 54, 0) 75%, #5a4536 97.51%);
+  background: linear-gradient(180deg, rgba(90, 69, 54, 0) 75%, #5a4536 99%);
   z-index: 6;
   pointer-events: none;
 }
@@ -958,7 +958,6 @@ main {
   height: 100svh;
   overflow: hidden;
   z-index: 2;
-  margin-bottom: 50vh;
 }
 .scale::before {
   content: "";
@@ -967,7 +966,7 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, #5a4536 5.67%, rgba(90, 69, 54, 0) 31.19%);
+  background: linear-gradient(180deg, #5a4536 2.67%, rgba(90, 69, 54, 0) 31.19%);
   z-index: 2;
   pointer-events: none;
 }
@@ -1216,7 +1215,7 @@ main {
   background-color: var(--color-fourth);
   overflow: hidden;
   z-index: 2;
-  margin-bottom: 100vh;
+  margin-bottom: 150vh;
 }
 .direction-cols .direction-inner {
   display: grid;

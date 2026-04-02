@@ -630,7 +630,7 @@ function directionCols() {
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: "+=200%",
+        end: "+=250%",
         pin: true,
         pinSpacing: false
         // markers: true,
@@ -892,7 +892,7 @@ function introSection() {
   mainTl.fromTo(
     ".intro-gradient",
     { yPercent: 0 },
-    { yPercent: -50, ease: "none" },
+    { yPercent: -50, ease: "none", duration: 0.67 },
     0
   );
 
