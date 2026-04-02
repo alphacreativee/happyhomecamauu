@@ -328,6 +328,7 @@ main {
 .footer-main {
   padding: 100px 24px;
   position: relative;
+  overflow: hidden;
 }
 @media (max-width: 991px) {
   .footer-main {
@@ -640,6 +641,8 @@ main {
   transform: translateZ(0);
 }
 .reveal-animation .reveal-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   position: relative;
 }
 .reveal-animation .reveal-image {
@@ -652,16 +655,6 @@ main {
   height: 100svh;
 }
 .reveal-animation .reveal-image-list .reveal-image-item {
-  width: 100%;
-  height: 100svh;
-  position: absolute;
-}
-.reveal-animation .reveal-image-list .reveal-image-item > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.reveal-animation .reveal-image-list .reveal-image-item .card-item {
   position: absolute;
   top: 50%;
   right: 24px;
@@ -704,9 +697,8 @@ main {
   height: 100%;
   padding-left: 45px;
   padding-top: 120px;
-  position: absolute;
-  z-index: 3;
-  width: 50%;
+  position: relative;
+  z-index: 2;
 }
 .reveal-animation .reveal-content h2 {
   font-size: 64px;
@@ -717,6 +709,22 @@ main {
   font-family: var(--font-heading);
   max-width: 480px;
   line-height: 1.4;
+}
+.reveal-animation .reveal-bg {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.reveal-animation .reveal-bg-item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
 }
 
 .reveal-image-item,
