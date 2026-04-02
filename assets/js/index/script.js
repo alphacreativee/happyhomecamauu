@@ -79,11 +79,11 @@ function revealClipImage() {
     });
 
     // stack bg
-    bgItems.forEach((item, i) => {
-      item.style.zIndex = bgItems.length - i;
-    });
+    // bgItems.forEach((item, i) => {
+    //   item.style.zIndex = bgItems.length - i;
+    // });
 
-    gsap.set([...imageItems.slice(1), ...bgItems.slice(1)], {
+    gsap.set([...imageItems.slice(1)], {
       clipPath: "inset(0 0 0 0)",
     });
 
@@ -114,19 +114,19 @@ function revealClipImage() {
       ); // 👈 KEY
     });
 
-    bgItems.forEach((item, i) => {
-      if (i === 0) return;
+    // bgItems.forEach((item, i) => {
+    //   if (i === 0) return;
 
-      tl.to(
-        bgItems[i - 1],
-        {
-          clipPath: "inset(0 0 100% 0)",
-          duration: 1,
-          ease: "none",
-        },
-        i,
-      );
-    });
+    //   tl.to(
+    //     bgItems[i - 1],
+    //     {
+    //       clipPath: "inset(0 0 100% 0)",
+    //       duration: 1,
+    //       ease: "none"
+    //     },
+    //     i
+    //   );
+    // });
   });
 }
 
@@ -139,8 +139,12 @@ function partnerSection() {
   const title = panel1.querySelector("h2");
   const desc = panel1.querySelector(".desc");
   const bgImg = section.querySelector(".section-bg img");
-  const circle = document.querySelector(".circle-gradient");
+  const circle = section.querySelector(".circle-gradient");
+  const circleReveal = document.querySelector(
+    ".reveal-animation .circle-gradient",
+  );
 
+  // Initial states
   gsap.set(desc, { opacity: 0 });
   gsap.set(panel2, { opacity: 0, pointerEvents: "none" });
 
@@ -153,6 +157,10 @@ function partnerSection() {
     opacity: 0,
     scale: 0.6,
   });
+
+  if (circleReveal) {
+    gsap.set(circleReveal, { opacity: 0 });
+  }
 
   gsap.to(circle, {
     left: "20%",
@@ -173,7 +181,7 @@ function partnerSection() {
     scrollTrigger: {
       trigger: section,
       start: "top top",
-      end: () => "+=" + (window.innerHeight + extraScroll),
+      end: () => `+=${window.innerHeight + extraScroll}`,
       pin: true,
       scrub: 1,
       anticipatePin: 1,
@@ -181,75 +189,74 @@ function partnerSection() {
     },
   });
 
-  // 1. Image fade
-  tl.to(
-    bgImg,
-    {
-      opacity: 1,
-      ease: "none",
-      duration: 0.4,
-    },
-    0,
-  );
-
-  // 🎬 2. Desc + hide title + circle (80%)
-  tl.to(
-    desc,
-    {
-      opacity: 1,
-      duration: 0.2,
-      ease: "power1.out",
-    },
-    0.8,
-  );
-
-  tl.to(
-    title,
-    {
-      opacity: 0,
-      duration: 0.4,
-    },
-    0,
-  );
+  tl.to(bgImg, { opacity: 1, duration: 0.4, ease: "none" }, 0);
 
   tl.to(
     circle,
     {
       opacity: 0.9,
       scale: 1,
-      duration: 0.5,
+      duration: 0.6,
       ease: "power2.out",
     },
-    0.3,
+    0.2,
   );
 
-  // 2. Desc + hide title + circle (80%)
+  tl.to(title, { opacity: 0, duration: 0.5 }, 0.3);
+
   tl.to(
     desc,
     {
       opacity: 1,
-      duration: 0.3,
+      duration: 0.4,
       ease: "power1.out",
     },
-    0.5,
+    0.6,
   );
 
   tl.to(
     panel1,
     {
       opacity: 0,
-      duration: 0.3,
+      duration: 0.4,
       ease: "power2.out",
     },
-    1,
-  )
+    1.2,
+  );
 
-    .to(panel2, {
+  tl.to(
+    panel2,
+    {
       opacity: 1,
       pointerEvents: "auto",
-      duration: 0.3,
+      duration: 0.4,
       ease: "power2.out",
+    },
+    1.3,
+  );
+
+  if (circleReveal) {
+    ScrollTrigger.create({
+      trigger: section,
+      start: "top top",
+      end: "top+=100%",
+      toggleActions: "play none none reverse",
+      onEnter: () => {
+        gsap.to(circleReveal, {
+          opacity: 1,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+      },
+      onLeaveBack: () => {
+        gsap.to(circleReveal, {
+          opacity: 0,
+          duration: 0.6,
+          ease: "power2.out",
+        });
+      },
     });
+  }
 }
 
 function marquee() {
@@ -935,12 +942,41 @@ function introSection() {
 
 function footer() {
   const footer = document.querySelector(".footer-container");
-  const heightOverlay = document.querySelector(".footer-overlay");
+  const pattern = document.querySelector(".footer-pattern");
+  const overlay = document.querySelector(".footer-overlay");
+
   if (!footer) return;
 
-  const heightFooter = footer.offsetHeight;
+  const footerHeight = footer.offsetHeight;
 
-  heightOverlay.style.height = `${heightFooter}px`;
+  if (overlay) {
+    overlay.style.height = `${footerHeight}px`;
+  }
+
+  if (pattern) {
+    gsap.set(pattern, {
+      opacity: 0,
+      x: 100,
+      y: -100,
+    });
+
+    ScrollTrigger.create({
+      trigger: "footer",
+      start: () => `top 75%`,
+      end: "+=100",
+      once: true,
+      // markers: true,
+      onEnter: () => {
+        gsap.to(pattern, {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          duration: 0.6,
+          ease: "power3.out",
+        });
+      },
+    });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
