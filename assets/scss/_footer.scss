@@ -12,20 +12,19 @@
       gap: 40px;
     }
   }
+  &-pattern {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+    width: 500px;
+    height: 400px;
+    background: url("../../images/pattern-footer.png") no-repeat right bottom;
+    background-size: cover;
+  }
   &-main {
     padding: 100px 24px;
     position: relative;
-
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 500px;
-      height: 400px;
-      background: url("../../images/pattern-footer.png") no-repeat right bottom;
-      background-size: cover;
-    }
 
     @media (max-width: 991px) {
       padding: 48px 24px 24px;

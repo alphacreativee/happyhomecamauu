@@ -315,19 +315,19 @@ main {
     gap: 40px;
   }
 }
-.footer-main {
-  padding: 100px 24px;
-  position: relative;
-}
-.footer-main::after {
-  content: "";
+.footer-pattern {
   position: absolute;
+  z-index: 1;
   bottom: 0;
   right: 0;
   width: 500px;
   height: 400px;
   background: url("../../images/pattern-footer.png") no-repeat right bottom;
   background-size: cover;
+}
+.footer-main {
+  padding: 100px 24px;
+  position: relative;
 }
 @media (max-width: 991px) {
   .footer-main {

@@ -912,12 +912,41 @@ function introSection() {
 
 function footer() {
   const footer = document.querySelector(".footer-container");
-  const heightOverlay = document.querySelector(".footer-overlay");
+  const pattern = document.querySelector(".footer-pattern");
+  const overlay = document.querySelector(".footer-overlay");
+
   if (!footer) return;
 
-  const heightFooter = footer.offsetHeight;
+  const footerHeight = footer.offsetHeight;
 
-  heightOverlay.style.height = `${heightFooter}px`;
+  if (overlay) {
+    overlay.style.height = `${footerHeight}px`;
+  }
+
+  if (pattern) {
+    gsap.set(pattern, {
+      opacity: 0,
+      x: 100,
+      y: -100
+    });
+
+    ScrollTrigger.create({
+      trigger: "footer",
+      start: () => `top 75%`,
+      end: "+=100",
+      once: true,
+      // markers: true,
+      onEnter: () => {
+        gsap.to(pattern, {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out"
+        });
+      }
+    });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
