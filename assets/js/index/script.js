@@ -471,6 +471,36 @@ function citySection() {
   );
 }
 function mapAnimation() {
+  if (!document.querySelector(".map")) return;
+  const runner = document.querySelector(".field-dat-runner");
+  const fill = document.querySelector(".field-dat");
+  const totalLength = runner.getTotalLength();
+  const runnerLength = 60;
+  const DURATION = 2.5;
+
+  gsap.set(runner, {
+    strokeDasharray: `${runnerLength} ${totalLength - runnerLength}`,
+    strokeDashoffset: 0,
+  });
+
+  gsap.to(runner, {
+    strokeDashoffset: -totalLength,
+    duration: DURATION,
+    ease: "none",
+    repeat: -1,
+  });
+
+  gsap.fromTo(
+    fill,
+    { fillOpacity: 0.15 },
+    {
+      fillOpacity: 1,
+      duration: DURATION / 2,
+      ease: "sine.inOut",
+      repeat: -1,
+      yoyo: true,
+    },
+  );
   const tlMap = gsap.timeline({
     scrollTrigger: {
       trigger: ".map",
