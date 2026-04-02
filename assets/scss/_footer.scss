@@ -25,6 +25,7 @@
   &-main {
     padding: 100px 24px;
     position: relative;
+    overflow: hidden;
 
     @media (max-width: 991px) {
       padding: 48px 24px 24px;

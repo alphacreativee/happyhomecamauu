@@ -925,9 +925,10 @@ function footer() {
 
   if (pattern) {
     gsap.set(pattern, {
-      opacity: 0,
-      x: 100,
-      y: -100
+      // opacity: 0,
+      x: -50,
+      rotation: -20,
+      y: 100
     });
 
     ScrollTrigger.create({
@@ -938,10 +939,11 @@ function footer() {
       // markers: true,
       onEnter: () => {
         gsap.to(pattern, {
-          opacity: 1,
+          // opacity: 1,
           x: 0,
           y: 0,
-          duration: 0.6,
+          rotation: 0,
+          duration: 0.8,
           ease: "power3.out"
         });
       }
