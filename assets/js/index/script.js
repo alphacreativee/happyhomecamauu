@@ -710,6 +710,12 @@ function directionCols() {
       end: "+=150%",
       invalidateOnRefresh: true,
     };
+    const scrollConfig2 = {
+      trigger: section,
+      start: "top top",
+      end: "+=300%",
+      invalidateOnRefresh: true,
+    };
     const contentsItem = section.querySelectorAll(".change-content-item");
     const itemsContentArray = Array.from(contentsItem);
     const total = itemsContentArray.length;
@@ -777,7 +783,7 @@ function directionCols() {
       gsap.to(target, {
         ...vars,
         ease: "none",
-        scrollTrigger: { ...scrollConfig, scrub: 1 },
+        scrollTrigger: { ...scrollConfig2, scrub: 1 },
       });
     });
   });
